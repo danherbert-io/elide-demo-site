@@ -15,8 +15,12 @@ class MoviesController extends Controller
 {
     public function __invoke(Request $request)
     {
+        $page = $request->integer('page');
+        $filter = trim($request->string('filter')) ?: null;
+
         $statusUpdate = $request->session()->get('status');
 
+        // If there's a status update, send a toast notification and an updated favourites widget.
         if ($statusUpdate) {
             Htmx::usingPartials(fn() => [
                 new ToastNotification($statusUpdate),
@@ -24,6 +28,21 @@ class MoviesController extends Controller
             ]);
         }
 
-        return Htmx::render(Page\Movies::class)->title('Movies');
+        // Make the movie component to be sent for HTMX.
+        $movies = app(Page\Movies::class, [
+            'filter' => $filter,
+        ]);
+
+        $titleParts = ['Movies'];
+
+        if ($filter) {
+            $titleParts[] = sprintf('Search: %s', $filter);
+        }
+
+        if ($page) {
+            $titleParts[] = sprintf('Page: %s', $page);
+        }
+
+        return Htmx::render($movies)->title(implode(' | ', $titleParts));
     }
 }

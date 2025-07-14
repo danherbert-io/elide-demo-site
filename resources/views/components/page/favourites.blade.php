@@ -4,9 +4,11 @@
         hx-post="{{route('clear-favourites')}}"
     >Clear favourites</button>
 
-    <div class="grid grid-cols-2 gap-4 md:grid-cols-4 xl:grid-cols-5">
-        @foreach ($favourites as $favourite)
+    <div class="w-full grid grid-cols-2 gap-4 md:grid-cols-4 xl:grid-cols-5">
+        @forelse($favourites as $favourite)
             <x-ui.movie-tile :movie="$favourite" is-favourite/>
-        @endforeach
+        @empty
+                <em class="col-span-full">You have no favourites yet!</em>
+        @endforelse
     </div>
 </div>

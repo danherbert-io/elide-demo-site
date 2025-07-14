@@ -2,9 +2,11 @@
    class="aspect-square w-10 flex justify-center items-center relative"
 >
 
-    <span class="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 rounded-full aspect-square bg-red-500 text-white font-bold w-5 text-xs flex items-center justify-center">
-        {{$total}}
-    </span>
+    @if($total > 0)
+        <span class="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 rounded-full aspect-square bg-red-500 text-white font-bold w-5 text-xs flex items-center justify-center">
+            {{$total}}
+        </span>
+    @endif
 
     <!-- credit: https://lucide.dev/icons/star -->
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"

@@ -1,7 +1,19 @@
-<nav hx-boost="true">
-    <ul>
-        <li @if(Route::is('page.movies')) class="font-bold" @endif><a href="{{route('page.movies')}}">Movies</a></li>
-        <li @if(Route::is('page.about')) class="font-bold" @endif><a href="{{route('page.about')}}">About</a></li>
-        <li @if(Route::is('page.favourites')) class="font-bold" @endif><a href="{{route('page.favourites')}}">Favourites</a></li>
-    </ul>
+<nav hx-boost="true" class="flex gap-1 text-xs justify-center items-center">
+    <a href="{{route('page.movies')}}" @class([
+            'px-3 py-1.5 rounded font-semibold',
+            'hover:bg-current/10',
+            'bg-current/10' => Route::is('page.movies'),
+        ])>Movies</a>
+
+    <a href="{{route('page.favourites')}}" @class([
+            'px-3 py-1.5 rounded font-semibold',
+            'hover:bg-current/10',
+            'bg-current/10' => Route::is('page.favourites'),
+        ]) >My favourites</a>
+
+    <a href="{{route('page.about')}}" @class([
+            'px-3 py-1.5 rounded font-semibold',
+            'hover:bg-current/10',
+            'bg-current/10' => Route::is('page.about'),
+        ])>About</a>
 </nav>

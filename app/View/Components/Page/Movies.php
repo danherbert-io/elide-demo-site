@@ -7,6 +7,7 @@ use App\Services\FavouritesService;
 use Closure;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\Component;
 
 class Movies extends Component
@@ -19,12 +20,17 @@ class Movies extends Component
      */
     public function __construct(
         public readonly FavouritesService $favouritesService,
+        public readonly null|string $filter = null,
     ) {
         $this->favourites = $favouritesService->favourites();
 
         $this->movies = Movie::query()
+            ->when($this->filter, function (Builder $query) {
+                $query->whereLike('name', '%'.$this->filter.'%');
+            })
             ->orderBy('name')
-            ->simplePaginate(20);
+            ->simplePaginate(20)
+            ->withQueryString();
     }
 
     /**
