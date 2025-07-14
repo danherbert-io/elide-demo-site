@@ -16,8 +16,7 @@ class FavouritesWidget extends Component
      */
     public function __construct(
         public readonly FavouritesService $favourites,
-    )
-    {
+    ) {
         $this->total = count($this->favourites->favourites());
     }
 

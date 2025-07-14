@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace App\Services;
 
 use App\Models\Movie;
@@ -12,9 +11,9 @@ class FavouritesService
     /**
      * @return array<int>
      */
-    public function favourites(null|array $favourites = null): array
+    public function favourites(?array $favourites = null): array
     {
-        if (!is_null($favourites)) {
+        if (! is_null($favourites)) {
             session()->put('favourites', $favourites);
         }
 
@@ -37,7 +36,7 @@ class FavouritesService
     {
         $favourites = array_filter(
             $this->favourites(),
-            fn($id) => $id !== $movie->id,
+            fn ($id) => $id !== $movie->id,
         );
 
         $this->favourites($favourites);

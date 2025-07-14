@@ -15,8 +15,7 @@ class MovieTile extends Component
     public function __construct(
         public readonly Movie $movie,
         public readonly bool $isFavourite = false,
-    )
-    {
+    ) {
         //
     }
 

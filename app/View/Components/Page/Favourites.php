@@ -12,13 +12,13 @@ use Illuminate\View\Component;
 class Favourites extends Component
 {
     public readonly Collection $favourites;
+
     /**
      * Create a new component instance.
      */
     public function __construct(
         public readonly FavouritesService $favouritesService,
-    )
-    {
+    ) {
         $this->favourites = Movie::query()
             ->whereIn('id', $this->favouritesService->favourites())
             ->orderBy('name')

@@ -22,12 +22,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Include the site navigation component with AJAX and non-AJAX requests.
-        Htmx::usingPartials(fn() => [
+        Htmx::usingPartials(fn () => [
             SiteNavigation::class,
         ]);
 
         // Include the favourites and user profile widgets with non-AJAX requests.
-        Htmx::usingPartials(fn() => [
+        Htmx::usingPartials(fn () => [
             FavouritesWidget::class,
             UserProfileWidget::class,
         ], for: RequestKind::NON_AJAX);

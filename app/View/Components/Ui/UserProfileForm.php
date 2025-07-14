@@ -11,8 +11,7 @@ class UserProfileForm extends Component
 {
     public function __construct(
         public readonly UserProfileService $userProfile
-    ) {
-    }
+    ) {}
 
     /**
      * Get the view / contents that represent the component.

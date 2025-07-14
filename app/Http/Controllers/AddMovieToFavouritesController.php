@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use App\Services\FavouritesService;
-use Illuminate\Http\Request;
 
 class AddMovieToFavouritesController extends Controller
 {
@@ -13,4 +12,5 @@ class AddMovieToFavouritesController extends Controller
         $favourites->addToFavourites($movie);
 
         return redirect()->back()->with('status', sprintf('"%s" added to favourites', $movie->name));
-    }}
+    }
+}

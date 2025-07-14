@@ -13,6 +13,7 @@ use Illuminate\View\Component;
 class Movies extends Component
 {
     public readonly Paginator $movies;
+
     public readonly array $favourites;
 
     /**
@@ -20,7 +21,7 @@ class Movies extends Component
      */
     public function __construct(
         public readonly FavouritesService $favouritesService,
-        public readonly null|string $filter = null,
+        public readonly ?string $filter = null,
     ) {
         $this->favourites = $favouritesService->favourites();
 

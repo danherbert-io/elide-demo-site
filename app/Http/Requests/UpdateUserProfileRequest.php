@@ -3,10 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Enums\UserTitle;
-use App\View\Components\Ui\UserProfileDialog;
-use App\View\Components\Ui\UserProfileForm;
-use Elide\Http\HtmxResponse;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
 
@@ -18,7 +14,7 @@ class UpdateUserProfileRequest extends FormRequest
             'name' => 'required|string',
             'title' => [
                 'nullable', new Enum(UserTitle::class),
-            ]
+            ],
         ];
     }
 

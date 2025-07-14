@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\View\Components\Page;
 use Elide\Htmx;
 
-
 class AboutController extends Controller
 {
     public function __invoke()

@@ -14,8 +14,7 @@ class ToastNotification extends Component implements ComponentSpecifiesSwapStrat
      */
     public function __construct(
         public readonly string $message,
-    )
-    {
+    ) {
         //
     }
 

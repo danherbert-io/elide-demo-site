@@ -9,8 +9,6 @@ use App\View\Components\Ui\ToastNotification;
 use Elide\Htmx;
 use Illuminate\Http\Request;
 
-;
-
 class MoviesController extends Controller
 {
     public function __invoke(Request $request)
@@ -22,7 +20,7 @@ class MoviesController extends Controller
 
         // If there's a status update, send a toast notification and an updated favourites widget.
         if ($statusUpdate) {
-            Htmx::usingPartials(fn() => [
+            Htmx::usingPartials(fn () => [
                 new ToastNotification($statusUpdate),
                 FavouritesWidget::class,
             ]);

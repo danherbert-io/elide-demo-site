@@ -15,8 +15,7 @@ class UserProfileController extends Controller
 {
     public function __construct(
         protected UserProfileService $userProfileService
-    ) {
-    }
+    ) {}
 
     public function dialog()
     {
@@ -27,12 +26,12 @@ class UserProfileController extends Controller
         // When there's no `_old_input` in the session the request has not come from a form submission - we
         // return both the dialog and the form. When `_old_input` is present, it has come from a form submission
         // and we want to return just the form.
-        $partials = !session()->has('_old_input')
+        $partials = ! session()->has('_old_input')
             ? [UserProfileDialog::class, UserProfileForm::class]
             : [UserProfileForm::class];
 
         return (new HtmxResponse)
-            ->usingPartials(fn() => $partials)
+            ->usingPartials(fn () => $partials)
             ->reswap('none');
     }
 
@@ -46,9 +45,9 @@ class UserProfileController extends Controller
         // Return a response which includes an updated user profile widget, a toast notification, and
         // also deletes the user dialog.
         return (new HtmxResponse)
-            ->usingPartials(fn() => [
+            ->usingPartials(fn () => [
                 UserProfileWidget::class,
-                new ToastNotification('Your profile has been updated')
+                new ToastNotification('Your profile has been updated'),
             ])
             ->retarget('#user-dialog')
             ->reswap('delete');

@@ -21,8 +21,7 @@ class DatabaseSeeder extends Seeder
     {
         try {
             return Http::timeout(5)->head($url)->status() !== 404;
-        }
-        catch(Exception) {
+        } catch (Exception) {
             return false;
         }
     }
@@ -35,7 +34,7 @@ class DatabaseSeeder extends Seeder
         $this->command->info('Retrieving movies from: '.static::MOVIE_DATA_URL);
         $json = file_get_contents(static::MOVIE_DATA_URL);
 
-        if (!$json) {
+        if (! $json) {
             throw new \RuntimeException('Sorry - could not load movie JSON file: '.static::MOVIE_DATA_URL);
         }
 
@@ -49,11 +48,11 @@ class DatabaseSeeder extends Seeder
 
             Arr::forget($movieSpec, ['actors', 'directors', 'genre']);
 
-            if (empty($movieSpec['image_url']) || !$this->urlExists($movieSpec['image_url'])) {
+            if (empty($movieSpec['image_url']) || ! $this->urlExists($movieSpec['image_url'])) {
                 Arr::forget($movieSpec, ['image_url']);
             }
 
-            if (empty($movieSpec['thumbnail_url']) || !$this->urlExists($movieSpec['thumbnail_url'])) {
+            if (empty($movieSpec['thumbnail_url']) || ! $this->urlExists($movieSpec['thumbnail_url'])) {
                 Arr::forget($movieSpec, ['thumbnail_url']);
             }
 

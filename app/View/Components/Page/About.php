@@ -22,6 +22,7 @@ class About extends Component
             app()->isProduction() ? now()->addYear() : 0,
             function () {
                 $file = resource_path('content/page/about.md');
+
                 return Str::markdown(file_exists($file)
                     ? file_get_contents($file)
                     : '(about content missing)'
