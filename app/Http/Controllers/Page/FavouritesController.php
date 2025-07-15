@@ -17,10 +17,8 @@ class FavouritesController extends Controller
 
         // If there's a status update, send a toast notification and an updated favourites widget.
         if ($statusUpdate) {
-            Htmx::usingPartials(fn () => [
-                new ToastNotification($statusUpdate),
-                FavouritesWidget::class,
-            ]);
+            Htmx::sendWithResponse(new ToastNotification($statusUpdate));
+            Htmx::sendWithResponse(FavouritesWidget::class);
         }
 
         return Htmx::render(Favourites::class)->title('Favourites');
