@@ -19,3 +19,23 @@ create dynamic frontends.
 - Setting up partials which will always be provided for AJAX requests, non-AJAX requests, or both; e.g.:
     - The navigation links might always be returned so that it can update the active page link
     - The favourites star might only be returned when the user's favourites have changed
+
+### Setup
+
+The following commands can be used to clone the repo, install dependencies, seed the database, and build the assets.
+
+```shell
+git clone git@github.com:danherbert-io/elide-demo-site.git
+composer install
+cp .env.example .env && php artisan key:generate
+composer reset-db
+npm i && npm run build
+```
+
+You may then serve the application:
+
+```shell
+php artisan serve
+```
+
+Alternatively, you can serve the application in your preferred local development environment (e.g., Herd).
