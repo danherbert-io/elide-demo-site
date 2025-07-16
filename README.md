@@ -43,7 +43,7 @@ Alternatively, you can serve the application in your preferred local development
 
 ### Things to look at
 
-Everything presented in this demo are fairly conventional Blade components. Have a suss at [Views/Components](app/Views/Components).
+Everything presented in this demo are fairly conventional Blade components. Have a suss at [View/Components](app/Views/Components).
 
 You'll find the page controllers under [Http/Controllers/Page](app/Http/Controllers/Page) - these will be a good reference for how Elide returns responses for HTMX in the frontend.
 
