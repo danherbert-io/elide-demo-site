@@ -4,9 +4,9 @@
     'rounded aspect-[6/9] relative overflow-hidden outline outline-black/50',
     ])}}
 >
-    @if($movie->image_url)
+    @if($movie->thumb_url)
     <img
-            src="{{$movie->image_url}}" class="absolute inset-0 object-cover z-1"
+            src="{{$movie->thumb_url}}" class="absolute inset-0 object-cover z-1 w-full h-full"
             onerror="this.remove()"
     >
     @else
