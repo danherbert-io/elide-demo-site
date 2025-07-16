@@ -26,6 +26,7 @@ The following commands can be used to clone the repo, install dependencies, seed
 
 ```shell
 git clone git@github.com:danherbert-io/elide-demo-site.git
+cd elide-demo-site
 composer install
 cp .env.example .env && php artisan key:generate
 composer reset-db
@@ -39,3 +40,11 @@ php artisan serve
 ```
 
 Alternatively, you can serve the application in your preferred local development environment (e.g., Herd).
+
+### Things to look at
+
+Everything presented in this demo are fairly conventional Blade components. Have a suss at [Views/Components](app/Views/Components).
+
+You'll find the page controllers under [Http/Controllers/Page](app/Http/Controllers/Page) - these will be a good reference for how Elide returns responses for HTMX in the frontend.
+
+The [UserProfileController](app/Http/Controllers/UserProfileController.php) may be of interest - it and the components it renders demonstrate how you can affect the frontend UI by more deliberately adding and removing elements from the backend.
