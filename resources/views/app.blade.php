@@ -7,11 +7,14 @@
     <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js"
             integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm"
             crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/idiomorph@0.7.3" integrity="sha384-JcorokHTL/m+D6ZHe2+yFVQopVwZ+91GxAPDyEZ6/A/OEPGEx1+MeNSe2OGvoRS9" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/idiomorph@0.7.3/dist/idiomorph-ext.min.js" integrity="sha384-szktAZju9fwY15dZ6D2FKFN4eZoltuXiHStNDJWK9+FARrxJtquql828JzikODob" crossorigin="anonymous"></script>
 
     @vite(['resources/css/app.css'])
 </head>
 <body class="font-sans antialiased max-w-5xl m-auto p-4 bg-neutral-900 text-neutral-50"
       hx-headers="{{json_encode(['X-CSRF-TOKEN' => csrf_token()])}}"
+      hx-ext="morph"
 >
 
 <div class="flex flex-col gap-4">

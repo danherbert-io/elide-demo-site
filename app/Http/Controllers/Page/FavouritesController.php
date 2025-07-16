@@ -13,7 +13,7 @@ class FavouritesController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $statusUpdate = $request->session()->get("status");
+        $statusUpdate = $request->session()->get('status');
 
         // If there's a status update, send a toast notification and an updated favourites widget.
         if ($statusUpdate) {
@@ -23,6 +23,6 @@ class FavouritesController extends Controller
             ]);
         }
 
-        return Htmx::render(Favourites::class)->title("Favourites");
+        return Htmx::render(Favourites::class)->title('Favourites');
     }
 }

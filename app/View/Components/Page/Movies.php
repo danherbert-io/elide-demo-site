@@ -5,12 +5,13 @@ namespace App\View\Components\Page;
 use App\Models\Movie;
 use App\Services\FavouritesService;
 use Closure;
+use Elide\Contracts\ComponentSpecifiesSwapStrategy;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\Component;
 
-class Movies extends Component
+class Movies extends Component implements ComponentSpecifiesSwapStrategy
 {
     public readonly Paginator $movies;
 
@@ -21,7 +22,7 @@ class Movies extends Component
      */
     public function __construct(
         public readonly FavouritesService $favouritesService,
-        public readonly ?string $filter = null,
+        public readonly ?string $filter = null
     ) {
         $this->favourites = $favouritesService->favourites();
 
@@ -47,5 +48,10 @@ class Movies extends Component
     public function isFavourite(Movie $movie): bool
     {
         return in_array($movie->id, $this->favourites);
+    }
+
+    public function swapStrategy(): string
+    {
+        return 'morph';
     }
 }

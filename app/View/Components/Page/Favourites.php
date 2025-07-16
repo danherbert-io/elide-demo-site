@@ -5,11 +5,12 @@ namespace App\View\Components\Page;
 use App\Models\Movie;
 use App\Services\FavouritesService;
 use Closure;
+use Elide\Contracts\ComponentSpecifiesSwapStrategy;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
 
-class Favourites extends Component
+class Favourites extends Component implements ComponentSpecifiesSwapStrategy
 {
     public readonly Collection $favourites;
 
@@ -17,7 +18,7 @@ class Favourites extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public readonly FavouritesService $favouritesService,
+        public readonly FavouritesService $favouritesService
     ) {
         $this->favourites = Movie::query()
             ->whereIn('id', $this->favouritesService->favourites())
@@ -31,5 +32,10 @@ class Favourites extends Component
     public function render(): View|Closure|string
     {
         return view('components.page.favourites');
+    }
+
+    public function swapStrategy(): string
+    {
+        return 'morph';
     }
 }
