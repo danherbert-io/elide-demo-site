@@ -20,14 +20,11 @@ class MoviesController extends Controller
 
         // If there's a status update, send a toast notification and an updated favourites widget.
         if ($statusUpdate) {
-            Htmx::sendWithResponse(new ToastNotification($statusUpdate));
-            Htmx::sendWithResponse(FavouritesWidget::class);
+            Htmx::sendWithResponse([
+                new ToastNotification($statusUpdate),
+                FavouritesWidget::class,
+            ]);
         }
-
-        // Make the movie component to be sent for HTMX.
-        $movies = app(Page\Movies::class, [
-            'filter' => $filter,
-        ]);
 
         $titleParts = ['Movies'];
 
@@ -39,6 +36,11 @@ class MoviesController extends Controller
             $titleParts[] = sprintf('Page: %s', $page);
         }
 
-        return Htmx::render($movies)->title(implode(' | ', $titleParts));
+        return Htmx::render(
+            Page\Movies::class,
+            props: [
+                'filter' => $filter,
+            ]
+        )->title(implode(' | ', $titleParts));
     }
 }

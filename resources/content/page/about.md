@@ -2,6 +2,8 @@
 
 This site is a simple demonstration of how Elide can streamline the creation of dynamic sites with Laravel and HTMX.
 
+There is a database which is seeded with a number of movies. Any favourites or "profile" information is only stored in the session - nothing user related is stored in the datbase.
+
 ## Links
 
 - [Elide at Github](https://github.com/danherbert-io/elide-for-laravel)
